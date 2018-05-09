@@ -24,22 +24,39 @@ public:
 	virtual ~QAPSolution();
 
 	
-	void putObjectIn(int object, int building);
+	inline void putBuildingIn(int building, int location){
+		_sol[location] = building;
+		_fitnessAssigned = false;
+	}
+
+	int whereIsBuilding(int building);
+	
+	inline bool hasBuilding(int location){
+		if(_sol[i]==0){
+			return false;
+		}
+
+		else{
+			return true;
+		}
+	}
 
 	
-	int whereIsObject(int object);
+	virtual inline double getFitness() const{
+		return _fitness;
+	}
 
 	
-	virtual double getFitness() const;
-
-	
-	void setFitness(double fitness);
+	void setFitness(double fitness){
+		_fitness = fitness;
+		_fitnessAssigned = true;
+	}
 
 	
 	virtual void copy(Solution &solution);
 
 	
-	bool hasValidFitness(){
+	inline bool hasValidFitness(){
 		return _fitnessAssigned;
 	}
 };

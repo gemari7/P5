@@ -17,7 +17,7 @@ QAPInstance::~QAPInstance(){
 		delete[] _flows[i];
 	}
 
-	//delete[] _profits;
+	delete[] _flows;
 
 	for(int i=0;i<getNumBuildings();i++){
 			delete[] _distances[i];
