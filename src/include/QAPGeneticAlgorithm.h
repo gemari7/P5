@@ -1,5 +1,5 @@
-#ifndef INCLUDE_MQKPGENETICALGORITHM_H_
-#define INCLUDE_MQKPGENETICALGORITHM_H_
+#ifndef INCLUDE_QAPGENETICALGORITHM_H_
+#define INCLUDE_QAPGENETICALGORITHM_H_
 
 #include <QAPMetaheuristic.h>
 #include <QAPSolution.h>
@@ -77,7 +77,7 @@ protected:
 			double fitness;
 
 			if (!(s->hasValidFitness())) {
-				fitness=QAPEvaluator::computeFitness(*_instance,*s);
+				fitness=QAPEvaluator::computeFitness(*_instance);
 				_results.push_back(fitness);
 				s->setFitness(fitness);
 
@@ -105,7 +105,7 @@ protected:
 
 			QAPSolGenerator::genRandomSol(*_instance,*sol);
 
-			fitness=QAPEvaluator::computeFitness(*_instance,*sol);
+			fitness=QAPEvaluator::computeFitness(*_instance);
 			sol->setFitness(fitness);
 			if(QAPEvaluator::compare(fitness,_bestSolution->getFitness())<0){
 				_bestSolution->copy(*sol);
@@ -191,7 +191,7 @@ public:
 
 		_bestSolution = new QAPSolution(*_instance);
 		QAPSolGenerator::genRandomSol(*_instance, *_bestSolution);
-		double fitness = QAPEvaluator::computeFitness(*_instance, *_bestSolution);
+		double fitness = QAPEvaluator::computeFitness(*_instance);
 		_bestSolution->setFitness(fitness);
 
 		_popSize = popSize;

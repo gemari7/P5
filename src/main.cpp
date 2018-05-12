@@ -6,9 +6,9 @@
 #include <QAPInstance.h>
 #include <QAPSolGenerator.h>
 #include <QAPSolution.h>
-//#include <QAPGeneticAlgorithm.h>
-#include <QAPLocalSearch.h>
-#include <QAPSimpleFirstImprovementNO.h>
+#include <QAPGeneticAlgorithm.h>
+//#include <QAPLocalSearch.h>
+//#include <QAPSimpleFirstImprovementNO.h>
 #include <QAPStopCondition.h>
 #include <Timer.h>
 
@@ -22,7 +22,7 @@ extern unsigned int seeds[];
 void runAGAExperiment(vector<double> &currentResults,
 		vector<double> &bestSoFarResults, vector<double> &bestPerIterations,
 		vector<double> &popMean, vector<double> &offMean,
-		MQKPInstance &instance) {
+		QAPInstance &instance) {
 
 	//Inicialización
 	QAPGeneticAlgorithm ga;

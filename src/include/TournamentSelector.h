@@ -21,7 +21,7 @@ protected:
 			Solution * sol;
 			sol=set[rand()%(int)set.size()];
 
-			if(QAPPEvaluator::compare(sol->getFitness(),best->getFitness())<0){
+			if(QAPEvaluator::compare(sol->getFitness(),best->getFitness())<0){
 				best=sol;
 			}
 		}
