@@ -43,6 +43,9 @@ public:
 		}
 	}
 
+	inline int getBuildingOf(int location){
+		return _sol[location];
+	}
 	
 	virtual inline double getFitness() const{
 		return _fitness;
