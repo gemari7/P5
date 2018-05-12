@@ -1,10 +1,10 @@
-#ifndef __QAPINSTANCE_H__
-#define __QAPINSTANCE_H__
+#ifndef __MQKPINSTANCE_H__
+#define __MQKPINSTANCE_H__
 
-#ifndef __QAPSOLUTION_H__
-#include "QAPSolution.h"
+#ifndef __MQKPSOLUTION_H__
+#include "MQKPSolution.h"
 #else
-class QAPSolution;
+class MQKPSolution;
 #endif
 
 #include <vector>
@@ -23,15 +23,15 @@ class QAPInstance{
 
 		~QAPInstance();
 
-		inline int getNumBuildings(){
+		inline getNumBuildings(){
 			return _numBuildings;
 		}
 
-		inline int getFlow(int b1,int b2){
+		inline getFlow(int b1,int b2){
 			return _flows[b1][b2];
 		}
 
-		inline int getDistance(int b1,int b2){
+		inline getDistance(int b1,int b2){
 			return _distances[b1][b2];
 		}
 
