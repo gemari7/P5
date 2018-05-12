@@ -17,7 +17,7 @@ QAPInstance::~QAPInstance(){
 		delete[] _flows[i];
 	}
 
-	delete[] _profits;
+	delete[] _flows;
 
 	for(int i=0;i<getNumBuildings();i++){
 			delete[] _distances[i];
@@ -29,7 +29,7 @@ QAPInstance::~QAPInstance(){
 	_numBuildings=0;
 }
 
-QAPInstance::readInstance(char * filename){
+void QAPInstance::readInstance(char * filename){
 	ifstream fe;
 
 	fe.open(filename,ifstream::in);
@@ -70,8 +70,8 @@ QAPInstance::readInstance(char * filename){
 
 	int j;
 
-	for(i=0; i<getBuildings(); i++){
-		for (j=0; j<getBuildings(); j++){
+	for(i=0; i<getNumBuildings(); i++){
+		for (j=0; j<getNumBuildings(); j++){
 			fe >> _flows[i][j];
 		}
 	}
@@ -86,7 +86,7 @@ QAPInstance::readInstance(char * filename){
 		exit(-1);
 	}
 
-	int i;
+
 
 	for(i=0; i<getNumBuildings(); i++){
 		_distances[i] = new int[getNumBuildings()];
@@ -102,8 +102,8 @@ QAPInstance::readInstance(char * filename){
 		fe >> _distances[i][i];
 	}
 
-	for(i=0; i<getBuildings(); i++){
-		for (j=0; j<getBuildings(); j++){
+	for(i=0; i<getNumBuildings(); i++){
+		for (j=0; j<getNumBuildings(); j++){
 			fe >> _distances[i][j];
 		}
 	}

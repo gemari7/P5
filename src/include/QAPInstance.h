@@ -1,10 +1,10 @@
-#ifndef __MQKPINSTANCE_H__
-#define __MQKPINSTANCE_H__
+#ifndef __QAPINSTANCE_H__
+#define __QAPINSTANCE_H__
 
-#ifndef __MQKPSOLUTION_H__
-#include "MQKPSolution.h"
+#ifndef __QAPSOLUTION_H__
+#include "QAPSolution.h"
 #else
-class MQKPSolution;
+class QAPSolution;
 #endif
 
 #include <vector>
@@ -23,15 +23,15 @@ class QAPInstance{
 
 		~QAPInstance();
 
-		inline getNumBuildings(){
+		inline int getNumBuildings(){
 			return _numBuildings;
 		}
 
-		inline getFlow(int b1,int b2){
+		inline int getFlow(int b1,int b2){
 			return _flows[b1][b2];
 		}
 
-		inline getDistance(int b1,int b2){
+		inline int getDistance(int b1,int b2){
 			return _distances[b1][b2];
 		}
 
@@ -39,3 +39,4 @@ class QAPInstance{
 
 		void randomPermutation(int size,vector <int> &perm);
 };
+#endif
