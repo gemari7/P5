@@ -7,8 +7,8 @@ double QAPEvaluator::_numEvaluations = 0.;
 double QAPEvaluator::computeFitness(QAPInstance &instance){
 	double fitness = 0;
 	
-	for(int i;i<instance.getNumBuildings();i++){
-		for(int j;j<instance.getNumBuildings();j++){
+	for(int i=0;i<instance.getNumBuildings();i++){
+		for(int j=0;j<instance.getNumBuildings();j++){
 			fitness+=instance.getFlow(i,j)*instance.getDistance(i,j);
 		}
 	}

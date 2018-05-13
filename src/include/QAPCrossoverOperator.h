@@ -78,19 +78,19 @@ protected:
 		double randSample = (((double) rand()) / RAND_MAX);
 
 		if (randSample < _crossProb) {
-			for(int i=0;i<_numLocalizaciones/4;i++){
+			for(int i=0;i<(int)_numBuildings/4;i++){
 				sol->putBuildingIn(i,sol2->whereIsBuilding(i));
 			}
 
-			for(int i=_numLocalizaciones-1;i>((_numLocalizaciones-1)-(_numLocalizaciones/4));i--){
+			for(int i=_numBuildings-1;i>(int)((_numBuildings-1)-(_numBuildings/4));i--){
 				sol->putBuildingIn(i,sol2->whereIsBuilding(i));
 			}
 
-			for(int i=0;i<_numLocalizaciones;i++){
+			for(int i=0;i<(int)_numBuildings;i++){
 				aux=sol1->whereIsBuilding(i);
 
 				if(!sol->hasBuilding(aux)){
-					sol->putBuildingIn(iterator+(_numLocalizaciones/4),aux);
+					sol->putBuildingIn(iterator+(_numBuildings/4),aux);
 					iterator+=1;
 				}
 			}

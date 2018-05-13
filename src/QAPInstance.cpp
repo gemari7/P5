@@ -9,22 +9,20 @@ QAPInstance::QAPInstance(){
 	_numBuildings=0;
 	_flows=NULL;
 	_distances=NULL;
-	_locations=NULL;
+
 }
 
 QAPInstance::~QAPInstance(){
 	for(int i=0;i<getNumBuildings();i++){
 		delete[] _flows[i];
+		delete[] _distances[i];
 	}
 
 	delete[] _flows;
 
-	for(int i=0;i<getNumBuildings();i++){
-			delete[] _distances[i];
-	}
 
 	delete[] _distances;
-	delete[] _locations;
+
 
 	_numBuildings=0;
 }
@@ -42,7 +40,7 @@ void QAPInstance::readInstance(char * filename){
 	string trush;
 
 	fe >> _numBuildings;
-	fe >> trush;
+	fe >> trush; //Nos saltamos la linea
 
 	//reservar memoria
 	_flows = new int * [getNumBuildings()];
@@ -64,10 +62,6 @@ void QAPInstance::readInstance(char * filename){
 	}
 
 	//Rellenar la matriz flows
-	for(i=0; i<getNumBuildings(); i++){
-		fe >> _flows[i][i];
-	}
-
 	int j;
 
 	for(i=0; i<getNumBuildings(); i++){
@@ -76,7 +70,7 @@ void QAPInstance::readInstance(char * filename){
 		}
 	}
 
-	fe >> trush;
+	fe >> trush;//Nos saltamos una linea
 
 	//reservar memoria
 	_distances = new int * [getNumBuildings()];
@@ -85,9 +79,6 @@ void QAPInstance::readInstance(char * filename){
 		cerr << "Error al reservar memoria para distances" << endl;
 		exit(-1);
 	}
-
-
-
 	for(i=0; i<getNumBuildings(); i++){
 		_distances[i] = new int[getNumBuildings()];
 
@@ -98,9 +89,6 @@ void QAPInstance::readInstance(char * filename){
 	}
 
 	//Rellenar la matriz flows
-	for(i=0; i<getNumBuildings(); i++){
-		fe >> _distances[i][i];
-	}
 
 	for(i=0; i<getNumBuildings(); i++){
 		for (j=0; j<getNumBuildings(); j++){
