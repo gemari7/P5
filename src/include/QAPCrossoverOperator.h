@@ -15,7 +15,7 @@ protected:
 	unsigned _numBuildings;
 	double _crossProb;
 
-	QAPSolution * cross(Solution *s1, Solution *s2) {
+	/*QAPSolution * cross(Solution *s1, Solution *s2) {
 		QAPSolution * sol = new QAPSolution(*_instance);
 		QAPSolution * sol1 = (QAPSolution *) s1;
 		QAPSolution * sol2 = (QAPSolution *) s2;
@@ -61,6 +61,42 @@ protected:
 				k++;
 			}
 		} else {
+			sol->copy(*sol1);
+		}
+
+		return sol;
+	}*/
+
+	QAPSolution * cross(Solution *s1, Solution *s2) {
+		QAPSolution * sol = new QAPSolution(*_instance);
+		QAPSolution * sol1 = (QAPSolution *) s1;
+		QAPSolution * sol2 = (QAPSolution *) s2;
+
+		int aux;
+		int iterator=0;
+
+		double randSample = (((double) rand()) / RAND_MAX);
+
+		if (randSample < _crossProb) {
+			for(int i=0;i<_numLocalizaciones/4;i++){
+				sol->putBuildingIn(i,sol2->whereIsBuilding(i));
+			}
+
+			for(int i=_numLocalizaciones-1;i>((_numLocalizaciones-1)-(_numLocalizaciones/4));i--){
+				sol->putBuildingIn(i,sol2->whereIsBuilding(i));
+			}
+
+			for(int i=0;i<_numLocalizaciones;i++){
+				aux=sol1->whereIsBuilding(i);
+
+				if(!sol->hasBuilding(aux)){
+					sol->putBuildingIn(iterator+(_numLocalizaciones/4),aux);
+					iterator+=1;
+				}
+			}
+		}
+
+		else{
 			sol->copy(*sol1);
 		}
 
